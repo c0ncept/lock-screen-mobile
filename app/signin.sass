@@ -1,0 +1,57 @@
+
+.signin-screen
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+  justify-content: center
+  text-align: center
+
+  $signColor : #f4ff81
+
+  svg
+    width: 250px
+    height: 150px
+
+  &--clock
+    margin-top: 10px
+    font-size: 48px
+    //font-weight: bold
+    font-family: sans-serif
+    color: #fff
+    opacity: 0.5
+
+
+    span
+      opacity: 0
+      animation: clockA 1.4s linear infinite
+
+  &--controls
+    margin-top: 50px
+    color: $signColor
+    font-size: 14px
+    text-transform: uppercase
+    @for $i from 1 through 19
+      span:nth-child(#{$i})
+        opacity: 0.1
+        animation: swiperA 5s linear infinite
+        @if $i < 10
+          animation-delay: unquote('.' + #{$i} + 's')
+        @else
+          animation-delay: 1\.#{$i - 10}s
+
+
+@keyframes swiperA
+  0%
+    opacity: 0
+  50%
+    opacity:  0.8
+  100%
+    opacity: 0
+
+@keyframes clockA
+  0%
+    opacity: .0
+  50%
+    opacity: 1
+  100%
+    opacity: .0
